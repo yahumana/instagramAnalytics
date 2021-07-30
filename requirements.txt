@@ -1,0 +1,2 @@
+django==2.2.24
+instabot==0.117.0
