@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <title>Аккаунты</title>
+{% endblock %}
+
+{% block side %}
+    <h2>Аккаунты</h2>
+    {% for account in accounts %}
+        <div class="max-width">
+            <p>{{ account.login }} <a onclick="">удалить</a></p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+    <h2>Для чего мы храним аккаунты?</h2>
+    <p>
+        Так удобнее, аккаунты хранятся для более быстрой работы с приложением
+        <br>
+        Важный момент пароли от аккаунтов в базе данных не шифруются.
+    </p>
+    <br>
+{% endblock %}
+
+<script src="{% static "js/ajaxRequest.js" %}"></script>

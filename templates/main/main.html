@@ -1,0 +1,42 @@
+{% extends  'layout.html' %}
+
+{% block head %}
+    <title>Главная</title>
+{% endblock %}
+
+{% block side %}
+<div class="max-width">
+    <h2>Аналитика</h2>
+    <p>Аналитика — часть искусства рассуждения — логики, рассматривающая учение об анализе — операции мысленного или реального расчленения целого на составные части, выполняемая в процессе познания или предметно-практической деятельности человека.</p>
+</div>
+<br>
+<div class="max-width">
+    <h2>Анализ</h2>
+    <p>
+        Метод научного исследования путём рассмотрения отдельных сторон, свойств, составных частей чего либо
+    </p>
+</div>
+{% endblock %}
+
+{% block main %}
+    <div class="max-width">
+        <h2>Аккануты для сбора информации</h2>
+        {% for account in accounts %}
+            <p>{{ account.login }}</p>
+        {% endfor %}
+        <p>
+            <a href="{% url 'analytics/accounts' %}">ещё..</a>
+        </p>
+    </div>
+    <br>
+    <div class="max-width">
+        <h2>Прошлые аналитики</h2>
+        {% for analitic in analytics %}
+            <h4>{{ analitic.account }}</h4>
+            <p>Выполнена: {{ analytic.date }}</p>
+        {% endfor %}
+        <p>
+            <a href="{% url 'analytics/accounts' %}">ещё..</a>
+        </p>
+    </div>
+{% endblock %}
