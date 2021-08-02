@@ -1,7 +1,9 @@
 from django.shortcuts import render
-
+from django.http import JsonResponse
 from django.shortcuts import redirect
+
 from .models import Account
+from .forms import CreateAccount
 
 
 def main(request):
@@ -13,18 +15,22 @@ def start(request):
 
 
 def accounts(request):
+    if request.method == 'POST':
+        form = CreateAccount(request.POST)
+        if form.is_valid():
+            form.save()
+
+
     content = {
         'accounts':Account.objects.all(),
+        'create_account_form':CreateAccount,
     }
     return render(request, 'analytics/accounts.html', content)
 
 
-#Ajax запросы
-def ajax_delete_account(request):
-    if not request.POST:
-        return redirect('/main/error')
-
-
-def ajax_create_account(request):
-    if not request.POST:
-        redirect('/main/error')
+def delete_account(request, id):
+    try:
+        Account.objects.filter(id=id).delete()
+    except:
+        pass
+    return redirect('analytics/accounts')

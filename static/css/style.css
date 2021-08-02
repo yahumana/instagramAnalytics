@@ -117,5 +117,17 @@ footer {
 }
 
 
+.button-hover {
+	transition: 0.4s;
+	font-size: 17px;;
+}
 
+.button-hover:hover {
+	color: #FF3333;
+	transition: 0.4s;
+	font-size: 20px;
+}
 
+.delete:hover {
+	color: #FF3333;
+}
