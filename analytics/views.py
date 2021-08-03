@@ -3,15 +3,23 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 
 from .models import Account
-from .forms import CreateAccount
-
+from .forms import CreateAccount, StartCollectingInformation
+from .collecting_information import collecting
 
 def main(request):
     return render(request, 'analytics/main.html')
 
 
 def start(request):
-    pass
+    if request.method == 'POST':
+        form = StartCollectingInformation(request.POST)
+        if form.is_valid():
+            form.save()
+    
+    content = {
+        'start_form':StartCollectingInformation(),
+    }
+    return render(request, 'analytics/start.html', content)
 
 
 def accounts(request):
@@ -34,3 +42,7 @@ def delete_account(request, id):
     except:
         pass
     return redirect('analytics/accounts')
+
+
+def analysts(request):
+    pass

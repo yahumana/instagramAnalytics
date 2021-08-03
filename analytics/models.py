@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # user - пользователь в отношении которого производится анализ
 
@@ -16,7 +17,10 @@ class Account(models.Model):
 class AnalyticRecord(models.Model):
     account = models.ForeignKey('Account', on_delete=models.CASCADE)
     user = models.CharField(max_length=100)
-    date = models.DateField()
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.user
 
 
 #Таблица которая хранит информацию о подписках пользователя 
@@ -45,6 +49,13 @@ class UserLikes(models.Model):
 class UserComment(models.Model):
     pass
 
+
 #Таблица которая хранит информацию о комментариях пользователей на странице пользователя
 class UserComments(models.Model):
     pass
+
+
+#Таблица для поиска общих подписок
+class JointSubscriptions(models.Model):
+    analytic = models.ForeignKey('AnalyticRecord', on_delete=models.CASCADE)
+    

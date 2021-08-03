@@ -7,7 +7,7 @@ from analytics.models import Account, AnalyticRecord
 def main(request):
     content = {
         'accounts':Account.objects.all()[:5],
-        'analytics':AnalyticRecord.objects.all()[:5],
+        'analysts':AnalyticRecord.objects.all()[:5],
     }
     return render(request, 'main/main.html', content)
 

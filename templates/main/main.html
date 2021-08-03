@@ -31,12 +31,12 @@
     <br>
     <div class="max-width">
         <h2>Прошлые аналитики</h2>
-        {% for analitic in analytics %}
-            <h4>{{ analitic.account }}</h4>
-            <p>Выполнена: {{ analytic.date }}</p>
+        {% for analytics in analysts %}
+            <h4>{{ analytics }}</h4>
+            <p>Выполнена: {{ analytics.date }}</p>
         {% endfor %}
         <p>
-            <a href="{% url 'analytics/accounts' %}">ещё..</a>
+            <a href="{% url 'analysts' %}">ещё..</a>
         </p>
     </div>
 {% endblock %}

@@ -131,3 +131,19 @@ footer {
 .delete:hover {
 	color: #FF3333;
 }
+
+
+/* Progress bar */
+#grey-progress {
+	width: 100%;
+	background-color: #ddd;
+}
+
+#progress {
+	width: 10%;
+	height: 30px;
+	background-color: #333;
+	text-align: center;
+	line-height: 30px;
+	color: white;
+}
